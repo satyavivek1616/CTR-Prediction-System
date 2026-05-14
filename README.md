@@ -6,27 +6,38 @@ An end-to-end Machine Learning project for predicting Advertisement Click Throug
 
 # Project Overview
 
-This project predicts the probability of a user clicking on an advertisement based on anonymized numerical and categorical features.
+This project predicts the probability of a user clicking on an advertisement using Machine Learning.
+
+The system also estimates:
+- expected advertisement revenue,
+- bidding value effectiveness,
+- click probability ranking.
 
 The project covers:
 - Exploratory Data Analysis (EDA)
 - Feature Engineering
 - Missing Value Analysis
-- Machine Learning Modeling
 - Threshold Tuning
-- XGBoost Optimization
+- XGBoost Modeling
 - SHAP Explainability
 - Flask Deployment
+- Revenue Estimation Logic
 
 ---
 
 # Business Problem
 
-Online advertising platforms such as Google Ads, YouTube, Instagram, and Facebook need to decide:
+CTR prediction systems are heavily used in:
+- Google Ads
+- Meta Ads
+- YouTube Ads
+- Recommendation Systems
+- Real-time Ad Bidding Platforms
 
-- Which advertisement should be shown?
-- Which users are more likely to click?
-- How should advertisements be ranked?
+This project simulates how advertisement systems estimate:
+- probability of user clicks,
+- expected revenue from advertisements,
+- ad ranking effectiveness.
 
 CTR prediction helps improve:
 - Ad targeting
@@ -106,15 +117,25 @@ Used for final optimized prediction model.
 
 ---
 
-# Key Learnings
+# Revenue Estimation Logic
 
-- Handling imbalanced datasets
-- Importance of ROC-AUC in ranking systems
-- Precision vs Recall tradeoff
-- Threshold tuning for business objectives
-- Feature importance interpretation
-- Explainable AI using SHAP
-- End-to-end ML deployment using Flask
+The deployed system estimates expected advertisement revenue using:
+
+```text
+Expected Value = CTR Probability × Bid Value
+```
+
+Example:
+- Predicted CTR = 65%
+- Advertisement Bid = $10
+
+Expected Revenue Value:
+
+```text
+0.65 × 10 = $6.5
+```
+
+This simulates simplified real-world advertisement bidding systems.
 
 ---
 
@@ -144,21 +165,40 @@ Used SHAP values to:
 
 # Flask Deployment
 
-Built a simple web application where users can:
-- Input feature values
+Built a web application where users can:
+- Input numerical feature values
 - Predict click probability
+- Estimate expected advertisement revenue
 - Interact with trained ML model through browser
+
+---
+
+# Application UI
+
+![Application UI](screenshots/app_ui.png)
+
+---
+
+# SHAP Explainability
+
+![SHAP Plot](screenshots/shap_plot.png)
+
+---
+
+# Power BI Dashboard
+
+![Power BI Dashboard](screenshots/powerbi_dashboard.png)
 
 ---
 
 # Future Improvements
 
-- Better categorical encoding
+- Real-time bidding optimization
 - Deep Learning CTR models
-- Real-time API deployment
-- Docker containerization
-- Advanced frontend dashboard
-- Recommendation system integration
+- User behavior tracking
+- Recommendation engine integration
+- Docker deployment
+- Cloud deployment
 
 ---
 
@@ -177,11 +217,29 @@ CTR_Prediction_App/
 ├── static/
 │   └── style.css
 │
+├── screenshots/
+│   ├── app_ui.png
+│   ├── shap_plot.png
+│   └── powerbi_dashboard.png
+│
 └── README.md
 ```
 
 ---
 
+# Key Learnings
+
+- Handling imbalanced datasets
+- ROC-AUC interpretation
+- Precision vs Recall tradeoff
+- Threshold tuning for business objectives
+- Feature importance analysis
+- Explainable AI using SHAP
+- End-to-end ML deployment using Flask
+- Revenue estimation logic in ad systems
+
+---
+
 # Author
 
-V Satya Vivek
+V Staya Vivek
