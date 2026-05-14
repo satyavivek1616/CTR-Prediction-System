@@ -139,12 +139,61 @@ This simulates simplified real-world advertisement bidding systems.
 
 ---
 
+# Flask Deployment
+
+Built a web application where users can:
+- Input numerical feature values
+- Predict click probability
+- Estimate expected advertisement revenue
+- Interact with trained ML model through browser
+
+---
+
+# Application UI
+
+## CTR Prediction Interface
+
+![CTR Prediction](screenshots/Application_UI_1.png)
+
+---
+
+## Revenue Estimation Interface
+
+![Revenue Prediction](screenshots/Application_UI_2.png)
+
+---
+
 # SHAP Explainability
 
-Used SHAP values to:
-- Interpret feature contributions
-- Understand prediction behavior
-- Analyze positive and negative feature impact
+## SHAP Feature Importance
+
+![SHAP 1](screenshots/SHAP_1.png)
+
+---
+
+## SHAP Summary Plot
+
+![SHAP 2](screenshots/SHAP_2.png)
+
+---
+
+# Power BI Dashboard
+
+## Dashboard Overview
+
+![Power BI Dashboard](screenshots/Power_BI_dashboard_1.png)
+
+---
+
+## Missing Value Analysis
+
+![Missing Value Analysis](screenshots/Power_BI_missing_values.png)
+
+---
+
+## Unique Categorical Feature Analysis
+
+![Unique Categorical Analysis](screenshots/Power_BI_unique-categorical_values.png)
 
 ---
 
@@ -160,34 +209,6 @@ Used SHAP values to:
 - HTML
 - CSS
 - Power BI
-
----
-
-# Flask Deployment
-
-Built a web application where users can:
-- Input numerical feature values
-- Predict click probability
-- Estimate expected advertisement revenue
-- Interact with trained ML model through browser
-
----
-
-# Application UI
-
-![Application UI](screenshots/app_ui.png)
-
----
-
-# SHAP Explainability
-
-![SHAP Plot](screenshots/shap_plot.png)
-
----
-
-# Power BI Dashboard
-
-![Power BI Dashboard](screenshots/powerbi_dashboard.png)
 
 ---
 
@@ -218,9 +239,13 @@ CTR_Prediction_App/
 │   └── style.css
 │
 ├── screenshots/
-│   ├── app_ui.png
-│   ├── shap_plot.png
-│   └── powerbi_dashboard.png
+│   ├── Application_UI_1.png
+│   ├── Application_UI_2.png
+│   ├── Power_BI_dashboard_1.png
+│   ├── Power_BI_missing_values.png
+│   ├── Power_BI_unique-categorical_values.png
+│   ├── SHAP_1.png
+│   └── SHAP_2.png
 │
 └── README.md
 ```
@@ -242,4 +267,4 @@ CTR_Prediction_App/
 
 # Author
 
-V Staya Vivek
+V Satya Vivek
