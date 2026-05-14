@@ -22,7 +22,7 @@
             <h1>CTR Prediction System</h1>
 
             <p class="subtitle">
-                Predict whether a user is likely to click an advertisement
+                Predict advertisement click probability and expected bidding revenue
             </p>
 
             <form action="/predict" method="POST">
@@ -48,8 +48,21 @@
 
                 </div>
 
+                <div class="bid-section">
+
+                    <label>Advertisement Bid Value ($)</label>
+
+                    <input
+                        type="number"
+                        step="any"
+                        name="bid_value"
+                        placeholder="Enter bid amount"
+                    >
+
+                </div>
+
                 <button type="submit">
-                    Predict Click Probability
+                    Predict CTR & Revenue
                 </button>
 
             </form>
@@ -58,7 +71,11 @@
 
             <div class="result">
 
-                {{ prediction_text }}
+                <h2>{{ prediction_text }}</h2>
+
+                <p>{{ bid_text }}</p>
+
+                <p>{{ expected_text }}</p>
 
             </div>
 

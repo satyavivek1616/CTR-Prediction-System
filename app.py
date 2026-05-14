@@ -40,14 +40,12 @@ def predict():
         input_data = {}
 
         # =============================================
-        # NUMERICAL FEATURES (I1 - I13)
+        # NUMERICAL FEATURES
         # =============================================
 
         for i in range(1, 14):
 
             val = request.form.get(f'I{i}')
-
-            # Replace empty values with 0
 
             if val == '':
                 val = 0
@@ -55,8 +53,7 @@ def predict():
             input_data[f'I{i}'] = float(val)
 
         # =============================================
-        # CATEGORICAL FEATURES (C1 - C26)
-        # TEMPORARY DEFAULT VALUES
+        # DEFAULT CATEGORICAL FEATURES
         # =============================================
 
         for i in range(1, 27):
@@ -76,27 +73,42 @@ def predict():
 
         input_df = pd.DataFrame([input_data])
 
-        # =============================================
-        # REORDER COLUMNS EXACTLY LIKE TRAINING
-        # =============================================
-
         input_df = input_df[model.feature_names_in_]
 
         # =============================================
-        # PREDICT CLICK PROBABILITY
+        # PREDICT CTR PROBABILITY
         # =============================================
 
-        prediction = model.predict_proba(input_df)[0][1]
+        ctr_probability = model.predict_proba(input_df)[0][1]
 
-        prediction_percent = round(prediction * 100, 2)
+        ctr_percent = round(ctr_probability * 100, 2)
 
         # =============================================
-        # RETURN RESULT TO FRONTEND
+        # GET BID VALUE
+        # =============================================
+
+        bid_value = request.form.get('bid_value')
+
+        if bid_value == '':
+            bid_value = 0
+
+        bid_value = float(bid_value)
+
+        # =============================================
+        # CALCULATE EXPECTED VALUE
+        # =============================================
+
+        expected_value = round(ctr_probability * bid_value, 2)
+
+        # =============================================
+        # RETURN RESULT
         # =============================================
 
         return render_template(
             'index.html',
-            prediction_text=f'Click Probability: {prediction_percent}%'
+            prediction_text=f'Predicted CTR: {ctr_percent}%',
+            bid_text=f'Bid Value: ${bid_value}',
+            expected_text=f'Expected Revenue Value: ${expected_value}'
         )
 
     except Exception as e:
@@ -107,7 +119,7 @@ def predict():
         )
 
 # =====================================================
-# RUN FLASK APPLICATION
+# RUN APPLICATION
 # =====================================================
 
 if __name__ == '__main__':
