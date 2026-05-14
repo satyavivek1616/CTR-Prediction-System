@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CTR Prediction System</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="card">
+
+            <h1>CTR Prediction System</h1>
+
+            <p class="subtitle">
+                Predict whether a user is likely to click an advertisement
+            </p>
+
+            <form action="/predict" method="POST">
+
+                <div class="grid">
+
+                    {% for i in range(1,14) %}
+
+                    <div class="input-box">
+
+                        <label>I{{i}}</label>
+
+                        <input
+                            type="number"
+                            step="any"
+                            name="I{{i}}"
+                            placeholder="Enter value"
+                        >
+
+                    </div>
+
+                    {% endfor %}
+
+                </div>
+
+                <button type="submit">
+                    Predict Click Probability
+                </button>
+
+            </form>
+
+            {% if prediction_text %}
+
+            <div class="result">
+
+                {{ prediction_text }}
+
+            </div>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
